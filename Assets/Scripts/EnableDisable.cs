@@ -22,7 +22,7 @@ public class EnableDisable : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             sr.enabled = false;
-            script.enabled = false;
+            script.enabled = false; //turn off scripts
             go.SetActive(false);
         }
         if (Input.GetKey(KeyCode.Space))
