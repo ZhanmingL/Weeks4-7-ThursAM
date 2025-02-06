@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
+using Unity.VisualScripting; //Text needed.
 
 public class Challen1rot : MonoBehaviour
 {
+    public TextMeshProUGUI score;
     float fasterSpeed = 10f; //Clock rotates faster than real time.
     float secondDegree;
     float nowAngle = 0f;
     float rotation;
-    int hourCalculator = 1; //Count how many hours have nov and been gone.
+    int hourCalculator = 12; //Count how many hours have nov and been gone.
 
     void Start()
     {
-        
+        score.text = hourCalculator.ToString();
     }
 
 
@@ -32,7 +36,7 @@ public class Challen1rot : MonoBehaviour
 
     void HourTeller()
     {
-        Debug.Log("Now is" + hourCalculator + "O'Clock"); //Report time.
         hourCalculator = (hourCalculator % 12) + 1; //12 hours in total, reset when get max.
+        score.text = hourCalculator.ToString();
     }
 }
