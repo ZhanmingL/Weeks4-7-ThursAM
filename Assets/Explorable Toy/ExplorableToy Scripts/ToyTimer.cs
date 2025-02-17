@@ -7,7 +7,7 @@ public class ToyTimer : MonoBehaviour
 {
     public Slider timer; //use slider to make my game's timer.
 
-    public float maxTime = 100f; //maximum value of my slider is 100.
+    public float maxTime = 30f; //maximum value of my slider is 100.
 
     void Start()
     {

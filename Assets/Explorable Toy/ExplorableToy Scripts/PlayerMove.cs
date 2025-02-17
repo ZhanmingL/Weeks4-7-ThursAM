@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     Vector2 minBound, maxBound; //screen bound's minimum values and maximum values.
 
+
     void Start()
     {
         GetBound(); //In the first frame, I directly count and get the Clamp value.
@@ -26,8 +27,6 @@ public class PlayerMove : MonoBehaviour
         MovePlayer(); //Move player.
 
         ClampPosition(); //Don't get out of screen.
-
-        GenerateBullet(); //Prefab creating when click mouse.
     }
 
     private void MovePlayer() //my function of player moving, keys input.
@@ -54,11 +53,9 @@ public class PlayerMove : MonoBehaviour
         maxBound = new Vector2(max.x, max.y);
     }
 
-    private void GenerateBullet()
+    public void GenerateBullet() //This function is important because it is controlled by a button, so also make it public.
     {
-        //Prefab executing.
-        if (Input.GetMouseButtonDown(0))
-        {
+            //Prefab executing.
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity); //When click mouseButton, generate a new bullet from Prefab.
             myBullet = newBullet.GetComponent<Bullet>();
 
@@ -68,7 +65,7 @@ public class PlayerMove : MonoBehaviour
             wantBulletScript.enemySide = enemySide.position; //Give enemy's position.
 
             mouseDown = true; //The condition of letting bullet's code run.
-        }
+        
         if (mouseDown == true && myBullet != null) //I make sure that Bullt is exist, then I run it's code.
         {
             myBullet.shoot(); //Run bullet moving function, then it is shot.

@@ -98,6 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   t: 0
-  speed: 5
-  playerSide: {fileID: 0}
-  enemySide: {fileID: 0}
+  speed: 10
+  playerSide: {x: 0, y: 0}
+  enemySide: {x: 0, y: 0}
