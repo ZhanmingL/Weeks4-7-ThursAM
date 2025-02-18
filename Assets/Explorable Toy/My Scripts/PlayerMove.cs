@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//I have so many codes in this script, so I divide them into many useful functions, I hope you will check them clearer as well.
+
 public class PlayerMove : MonoBehaviour
 {
     float speed = 5f; //Player sprite's move speed value.
@@ -33,7 +35,7 @@ public class PlayerMove : MonoBehaviour
         playerHealth.maxValue = healthValue; //when player's health is full.
         playerHealth.value = healthValue; //at the beginning of my toy game, set player's health bar to full.
 
-        gameOverPage.SetActive(false);
+        gameOverPage.SetActive(false); //I do not want this page on at the beginning.
     }
 
     void Update()
@@ -95,9 +97,9 @@ public class PlayerMove : MonoBehaviour
     }
     private void GameOverPage()
     {
-        if(playerHealth.value == 0)
+        if(playerHealth.value == 0) //When player lose all the health,
         {
-            gameOverPage.SetActive(true);
+            gameOverPage.SetActive(true); // then game over.
         }
     }
 }
