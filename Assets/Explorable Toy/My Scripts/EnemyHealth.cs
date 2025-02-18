@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
 
     public float enemyHealth = 100f; //enemy has 100 health values.
     public float healthValue; //The number in the text.
-    float damage; //number of reducing enemy's health on the top UI.
+    public float damage; //number of reducing enemy's health on the top UI.
 
     void Start()
     {

@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
-    float speed = 5f; //Player sprite's move speed value.
-    float healthValue = 10f; //Player has 10 health values in maximum.
-    public float enemyDamage = 10;
+    public float speed = 5f; //Player sprite's move speed value.
+    public float healthValue = 10f; //Player has 10 health values in maximum.
+    public float enemyDamage = 6; //When player touches enemy, the value of losing health.
 
     public GameObject bulletPrefab; //I want bullet generated from original prefab.
     public GameObject gameOverPage; //I want this UI image comeout when player's health == 0.
@@ -69,7 +69,7 @@ public class PlayerMove : MonoBehaviour
         clampP.y = Mathf.Clamp(clampP.y, minBound.y, maxBound.y); //y position value's restriction.
         transform.position = clampP;
     }
-    private void GetBound()
+    private void GetBound() //This function is to get bound position at the beginning of my game.
     {
         Vector2 min = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)); //I state where the minimum bound's location is.
         Vector2 max = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)); //I also state maximum bound's location. Now, these helpful vectors stop player's position within the screen.
@@ -77,7 +77,7 @@ public class PlayerMove : MonoBehaviour
         maxBound = new Vector2(max.x, max.y);
     }
 
-    public void GenerateBullet() //This function is important because it is controlled by a button, so also make it public.
+    public void GenerateBullet() //This function is important because it is controlled by a button, so also make it public. Others are not matter, so I make them private.
     {
             //Prefab executing.
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity); //When click mouseButton, generate a new bullet from Prefab.
