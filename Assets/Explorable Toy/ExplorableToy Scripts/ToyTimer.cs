@@ -9,12 +9,12 @@ public class ToyTimer : MonoBehaviour
 
     public float maxTime = 30f; //maximum value of my slider is 100.
 
-    public GameObject gameOverPage;
+    public GameObject gameOverPage; //UI image of game over screen.
 
     void Start()
     {
         timer.value = maxTime; //initialize timer value to the maximum.
-        gameOverPage.SetActive(false);
+        gameOverPage.SetActive(false); //keep hiding the game lose page in the start of my toy game.
     }
 
 
@@ -24,7 +24,7 @@ public class ToyTimer : MonoBehaviour
 
         if (timer.value == 0)
         {
-            gameOverPage.SetActive(true);
+            gameOverPage.SetActive(true); //If the timer runs at zero, let the gameover page covers screen.
         }
     }
 }
