@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public Slider bar; //HealthBar of enemy.
     public Slider damageSlider; //A slider that can edit damage value by player.
 
-    public float enemyHealth = 100f;
+    public float enemyHealth = 100f; //enemy has 100 health values.
     public float healthValue;
     float damage;
 

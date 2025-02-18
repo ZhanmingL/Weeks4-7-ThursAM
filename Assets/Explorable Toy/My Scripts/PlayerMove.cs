@@ -1,25 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
     float speed = 5f; //Player sprite's move speed value.
+    float healthValue = 10f; //Player has 10 health values in maximum.
+    public float enemyDamage = 10;
 
     public GameObject bulletPrefab; //I want bullet generated from original prefab.
+    public GameObject gameOverPage; //I want this UI image comeout when player's health == 0.
 
     bool mouseDown = false;
 
     public Transform enemySide; //Enemy's position, I will get it in Unity's inspector.
+    public Transform enemyAttacker; //get the transformposition value to get damage.
 
     Bullet myBullet; //Get a bullet reference.
 
-    Vector2 minBound, maxBound; //screen bound's minimum values and maximum values.
+    Vector2 minBound;
+    Vector2 maxBound; //screen bound's minimum values and maximum values.
+
+    public Slider playerHealth; //Player's health bar, not interactable.
 
 
     void Start()
     {
         GetBound(); //In the first frame, I directly count and get the Clamp value.
+
+        playerHealth.minValue = 0;
+        playerHealth.maxValue = healthValue; //when player's health is full.
+        playerHealth.value = healthValue; //at the beginning of my toy game, set player's health bar to full.
+
+        gameOverPage.SetActive(false);
     }
 
     void Update()
@@ -27,6 +41,8 @@ public class PlayerMove : MonoBehaviour
         MovePlayer(); //Move player.
 
         ClampPosition(); //Don't get out of screen.
+
+        GameOverPage(); //Open game over screen when player is dead.
     }
 
     private void MovePlayer() //my function of player moving, keys input.
@@ -36,6 +52,12 @@ public class PlayerMove : MonoBehaviour
         pos.x += Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime; //Input of "A""D" and two arrow keys control movement of player (horizontally).
         pos.y += Input.GetAxisRaw("Vertical") * speed * Time.deltaTime; //Input of "W""S" and two arrow keys control movement.
         transform.position = pos;
+
+        Vector2 enemyMove = enemyAttacker.position;
+        if ((enemyMove.x <= pos.x + 2.5 && enemyMove.x >= pos.x - 2.5) && (enemyMove.y <= pos.y + 1 && enemyMove.y >= pos.y - 1)) //Calculation of player's position within enemy's position, so I can do health damage.
+        {
+            playerHealth.value -= enemyDamage * Time.deltaTime; //Lose health when player's position is in the enemyAttacker's position, enemyAttacker is like a big cannonball.
+        }
     }
 
     private void ClampPosition() //It's a function that controls player within the screen.
@@ -69,6 +91,13 @@ public class PlayerMove : MonoBehaviour
         if (mouseDown == true && myBullet != null) //I make sure that Bullt is exist, then I run it's code.
         {
             myBullet.shoot(); //Run bullet moving function, then it is shot.
+        }
+    }
+    private void GameOverPage()
+    {
+        if(playerHealth.value == 0)
+        {
+            gameOverPage.SetActive(true);
         }
     }
 }
