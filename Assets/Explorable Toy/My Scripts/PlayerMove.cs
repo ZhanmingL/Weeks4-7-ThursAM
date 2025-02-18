@@ -47,8 +47,8 @@ public class PlayerMove : MonoBehaviour
     }
     private void GetBound()
     {
-        Vector2 min = Camera.main.ScreenToWorldPoint(new Vector3(0, 0)); //I state where the minimum bound's location is.
-        Vector2 max = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height)); //I also state maximum bound's location. Now, these helpful vectors stop player's position within the screen.
+        Vector2 min = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)); //I state where the minimum bound's location is.
+        Vector2 max = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)); //I also state maximum bound's location. Now, these helpful vectors stop player's position within the screen.
         minBound = new Vector2(min.x, min.y); //Now give these vectoe values back to main one which gonna be used my me.
         maxBound = new Vector2(max.x, max.y);
     }
