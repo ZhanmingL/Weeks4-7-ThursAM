@@ -28,6 +28,6 @@ public class Barrel : MonoBehaviour
     private void Fire()
     {
         GameObject bullet = Instantiate(prefab);
-        Destroy(prefab, 3);
+        Destroy(bullet, 3);
     }
 }
