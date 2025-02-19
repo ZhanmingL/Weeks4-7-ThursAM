@@ -63,9 +63,9 @@ public class PlayerMove : MonoBehaviour
         myBullet = newBullet.GetComponent<Bullet>(); //I also want to get a function, use newBullet to get from Bullet, then myBullet is OK to get access.
 
         //These codes are giving values when each new prefab(bullet) is generated, because I cannot directly give value in Prefab's Inspector.
-        Bullet wantBullet = newBullet.GetComponent<Bullet>(); //I want two Vector2 values from Bullet class script, that are playerside and enemyside, then I can give them value.
-        wantBullet.playerSide = transform.position; //Give generated bullet the player's position(generated position as well).
-        wantBullet.enemySide = enemySide.position; //Give enemy's position.
+        //I want two Vector2 values from Bullet class script, that are playerside and enemyside, then I can give them value.
+        myBullet.playerSide = transform.position; //Give generated bullet the player's position(generated position as well).
+        myBullet.enemySide = enemySide.position; //Give enemy's position.
 
         buttonDown = true; //Accept bullet's code run.
         
